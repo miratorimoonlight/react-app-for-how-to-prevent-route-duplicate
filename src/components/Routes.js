@@ -18,6 +18,10 @@ class Routes extends Component {
     componentDidMount() {
         console.log("Fire the ROUTE BLOCKER FUNCTION.....")
         const {history} = this.props
+
+        //history.block: 
+        //if next route is same as current route (history.location), DO not proceed (return false)
+        //else, proceed (return true)
         history.block((location) => {
             if (history.location.pathname === location.pathname )
                 return false
@@ -37,4 +41,5 @@ class Routes extends Component {
     }
 }
 
+//withRouter is needed to get history props...Otherwise we can't use history.block in componentDidMount above
 export default withRouter(Routes)
